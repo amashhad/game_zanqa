@@ -1,2 +1,2 @@
 # Run with 
-	cc main.c -lmlx -lXext -lX11 -lm -lbsd
+	cc main.c player.c -lmlx -lXext -lX11 -lm -lbsd

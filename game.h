@@ -20,14 +20,27 @@ typedef struct s_screen{
 	;
 }	t_screen;
 
+typedef struct s_images{
+	void	*img_player;
+	void	*img_wall;
+	void	*img_floor;
+}	t_images;
+
 /*
 main struct, has mlx and is parent of all structs
 */
 typedef struct s_data{
+	int			img_width;
+	int			img_height;
+	int			player_x;
+	int			player_y;
 	void		*mlx;
 	void		*window;
 	t_map		*map;
+	t_images	*images;
 	t_screen	*screen;
 }	t_data;
+
+void	move_player(t_data *data, int dx, int dy);
 
 # endif
