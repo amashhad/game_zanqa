@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dv8u2besy7fns"]
+
+[ext_resource type="Texture2D" uid="uid://c76v1t0njj678" path="res://assets/Sprout Lands - Sprites - Basic pack/Tilesets/Water.png" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://d0jrkneq7vbu0" path="res://player/player.tscn" id="2_fj7yv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fj7yv"]
+size = Vector2(64, 18)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fj7yv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tlwt5"]
+size = Vector2(45.625, 7)
+
+[node name="World" type="Node2D"]
+
+[node name="Water" type="Sprite2D" parent="."]
+position = Vector2(24, 18.5)
+scale = Vector2(0.75, 2.1875)
+texture = ExtResource("1_f3sb7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Water"]
+position = Vector2(-5.72205e-06, -1)
+shape = SubResource("RectangleShape2D_fj7yv")
+
+[node name="Player" parent="." instance=ExtResource("2_fj7yv")]
+position = Vector2(22, 18)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(22, 40)
+physics_material_override = SubResource("PhysicsMaterial_fj7yv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.8125, 0)
+shape = SubResource("RectangleShape2D_tlwt5")

@@ -1,0 +1,98 @@
+[gd_scene load_steps=15 format=3 uid="uid://d0jrkneq7vbu0"]
+
+[ext_resource type="Texture2D" uid="uid://cc487by7ivcar" path="res://assets/Sprout Lands - Sprites - Basic pack/cows/cow1.png" id="1_g6k8r"]
+[ext_resource type="Script" uid="uid://c8jp4wd3lkk24" path="res://player/player.gd" id="1_rgyib"]
+[ext_resource type="Texture2D" uid="uid://dhm6bjpqs4v2n" path="res://assets/Sprout Lands - Sprites - Basic pack/cows/cow2.png" id="2_boad6"]
+[ext_resource type="Texture2D" uid="uid://dg14eqle81hoc" path="res://assets/Sprout Lands - Sprites - Basic pack/cows/cow4.png" id="3_rgyib"]
+[ext_resource type="Texture2D" uid="uid://dgop7l5rx73p2" path="res://assets/Sprout Lands - Sprites - Basic pack/cows/cow5.png" id="4_hg6s5"]
+[ext_resource type="Texture2D" uid="uid://b5mtdl6mn1og8" path="res://assets/Sprout Lands - Sprites - Basic pack/cows/cow3.png" id="5_8t03j"]
+[ext_resource type="Texture2D" uid="uid://d1ypwfgejqlso" path="res://assets/Sprout Lands - Sprites - Basic pack/cows/cow6.png" id="6_2ieo8"]
+[ext_resource type="Texture2D" uid="uid://dcc7bb7sgenbj" path="res://assets/Sprout Lands - Sprites - Basic pack/Characters/Egg_And_Nest.png" id="7_boad6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kqu6x"]
+radius = 13.0
+height = 36.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgyib"]
+atlas = ExtResource("7_boad6")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg6s5"]
+atlas = ExtResource("7_boad6")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8t03j"]
+atlas = ExtResource("7_boad6")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ieo8"]
+atlas = ExtResource("7_boad6")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kqu6x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g6k8r")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_boad6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rgyib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hg6s5")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_8t03j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2ieo8")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgyib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hg6s5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8t03j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ieo8")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(34, 30)
+script = ExtResource("1_rgyib")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_kqu6x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -7)
+scale = Vector2(2.09076, 2.8125)
+sprite_frames = SubResource("SpriteFrames_kqu6x")
+animation = &"Walk"
+frame = 2
+frame_progress = 0.954017
